@@ -1,0 +1,137 @@
+{% extends "layout_user.html" %}
+{% import "bootstrap/utils.html" as utils %}
+{% block content %}
+<div class="row">
+  {{ utils.flashed_messages() }}
+    <div class="col-lg-12">
+      <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        {% if action == 'store' %}
+        <legend class="border-bottom mb-4">Thêm hợp đồng</legend>
+        {% else %}
+        <legend class="border-bottom mb-4">Sửa hợp đồng : {{form.title.data}} </legend>
+        {% endif %}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+              {{ form.title.label(class="form-control-label") }}
+              {% if form.title.errors %}
+              {{ form.title(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.title.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.title(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+              {{ form.status.label(class="form-control-label") }}
+              {% if form.status.errors %}
+              {{ form.status(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.status.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.status(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+          </div>
+          </div>
+        <div class="row">
+           <div class="col-md-6">
+              <div class="form-group">
+              {{ form.type.label(class="form-control-label") }}
+              {% if form.type.errors %}
+              {{ form.type(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.type.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.type(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+          </div>
+            <div class="col-md-6">
+              <div class="form-group">
+              {{ form.date_sign.label(class="form-control-label") }}
+              {% if form.date_sign.errors %}
+              {{ form.date_sign(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.date_sign.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.date_sign(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+          </div>
+         </div>
+        <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+              {{ form.date_effective.label(class="form-control-label") }}
+              {% if form.date_effective.errors %}
+              {{ form.date_effective(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.date_effective.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.date_effective(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+          </div>
+        <div class="col-md-6">
+              <div class="form-group">
+              {{ form.date_expiration.label(class="form-control-label") }}
+              {% if form.date_expiration.errors %}
+              {{ form.date_expiration(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.date_expiration.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.date_expiration(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <div class="form-group">
+              {{ form.employee_id.label(class="form-control-label") }}
+              {% if form.employee_id.errors %}
+              {{ form.employee_id(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.employee_id.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.employee_id(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="form-group"  style="text-align: center;">
+             <a class="btn btn-info btn-sm mt-1 mb-1" style="padding: 7px;font-size: 16px;"
+              href="{{ url_for('list_contract') }}">Danh sách</a>
+              {{ form.submit(class="btn btn-primary")  }}
+      </div>
+    </form>
+    </div>
+</div>
+{% endblock %}

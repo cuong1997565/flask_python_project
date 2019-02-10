@@ -1,0 +1,31 @@
+{% extends "layout_user.html" %}
+{% import "bootstrap/utils.html" as utils %}
+{% block content %}
+    <div class="alert">
+      {{ utils.flashed_messages() }}
+    </div>
+     <h2>List user</h2>
+     <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for user in listUser %}
+      <tr>
+        <td> {{ user.id }} </td>
+        <td> {{user.username}} </td>
+        <td> {{user.email}} </td>
+        <td>
+         <a class="btn btn-info btn-sm mt-1 mb-1" href="{{ url_for('update', id=user.id) }}">Sua</a>
+         <a class="btn btn-info btn-sm mt-1 mb-1" href="{{ url_for('delete', id=user.id) }}" onclick="return confirm('Confirm delete?')">Xoa</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
